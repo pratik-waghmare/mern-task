@@ -35,6 +35,13 @@ __Headers__ - Authorization: "Bearer token"<br/>
 __Request body__ - { password : String, newPassword : String}<br/>
 __Response__ - { message : String}<br/>
 
+### Modules Used
+__Mongoose__ - for Schema models<br/>
+__Bcrypt__ - to encrypt the passwords<br/>
+__JSON Web Token__ - to generate tokens<br/>
+__Dotenv__ ( development ) - to use .env varibales in node js<br/>
+__Cors__ - for Cross-origin resource sharing<br/>
+
 
 ## Backend
 <p align="left">
