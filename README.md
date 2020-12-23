@@ -4,36 +4,36 @@
 
 ## End Points
 ### Get all users
-[/api/users](https://mern-api-task.herokuapp.com/api/users)
-__Method__ - GET
-__Request body__ - {}
-__Response__ - { users: []}
+[/api/users](https://mern-api-task.herokuapp.com/api/users)<br/>
+__Method__ - GET<br/>
+__Request body__ - {}<br/>
+__Response__ - { users: []}<br/>
 
 ### User Sign Up
-[/api/signup](https://mern-api-task.herokuapp.com/api/signup)
-__Method__ - POST
-__Request body__ - { name : String, email : String, Unique, password : String}
-__Response__ - { message : String}
+[/api/signup](https://mern-api-task.herokuapp.com/api/signup)<br/>
+__Method__ - POST<br/>
+__Request body__ - { name : String, email : String, Unique, password : String}<br/>
+__Response__ - { message : String}<br/>
 
 ### User Login
-[/api/login](https://mern-api-task.herokuapp.com/api/login)
-__Method__ - POST
-__Request body__ - { email : String, Unique, password : String}
-__Response__ - { userId : String, email : String, token : String}
+[/api/login](https://mern-api-task.herokuapp.com/api/login)<br/>
+__Method__ - POST<br/>
+__Request body__ - { email : String, Unique, password : String}<br/>
+__Response__ - { userId : String, email : String, token : String}<br/>
 
 ### User Profile
-[/api/:uid](https://mern-api-task.herokuapp.com/api/)
-__Method__ - GET
-__Headers__ - Authorization: "Bearer token"
-__Request body__ - {}
+[/api/:uid](https://mern-api-task.herokuapp.com/api/)<br/>
+__Method__ - GET<br/>
+__Headers__ - Authorization: "Bearer token"<br/>
+__Request body__ - {}<br/>
 
 
 ### Update password
-[/api/:uid](https://mern-api-task.herokuapp.com/api/)
-__Method__ - PATCH
-__Headers__ - Authorization: "Bearer token"
-__Request body__ - { password : String, newPassword : String}
-__Response__ - { message : String}
+[/api/:uid](https://mern-api-task.herokuapp.com/api/)<br/>
+__Method__ - PATCH<br/>
+__Headers__ - Authorization: "Bearer token"<br/>
+__Request body__ - { password : String, newPassword : String}<br/>
+__Response__ - { message : String}<br/>
 
 
 ## Backend
