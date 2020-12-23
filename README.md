@@ -1,4 +1,7 @@
 # User API
+## API URL
+[Mern API](https://mern-api-task.herokuapp.com/api/users)
+
 
 ## Backend
 <p align="left">
