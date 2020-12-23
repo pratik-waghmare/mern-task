@@ -2,6 +2,39 @@
 ## API URL
 [Mern API](https://mern-api-task.herokuapp.com/api/users)
 
+## End Points
+### Get all users
+[/api/users](https://mern-api-task.herokuapp.com/api/users)
+__Method__ - GET
+__Request body__ - {}
+__Response__ - { users: []}
+
+### User Sign Up
+[/api/signup](https://mern-api-task.herokuapp.com/api/signup)
+__Method__ - POST
+__Request body__ - { name : String, email : String, Unique, password : String}
+__Response__ - { message : String}
+
+### User Login
+[/api/login](https://mern-api-task.herokuapp.com/api/login)
+__Method__ - POST
+__Request body__ - { email : String, Unique, password : String}
+__Response__ - { userId : String, email : String, token : String}
+
+### User Profile
+[/api/:uid](https://mern-api-task.herokuapp.com/api/)
+__Method__ - GET
+__Headers__ - Authorization: "Bearer token"
+__Request body__ - {}
+
+
+### Update password
+[/api/:uid](https://mern-api-task.herokuapp.com/api/)
+__Method__ - PATCH
+__Headers__ - Authorization: "Bearer token"
+__Request body__ - { password : String, newPassword : String}
+__Response__ - { message : String}
+
 
 ## Backend
 <p align="left">
@@ -20,7 +53,7 @@
 
 In the project directory, you can run:
 
-### `npm run devStart`
+### `npm run dev`
 
 Runs the app in the development mode.\
 Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
