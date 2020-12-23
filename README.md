@@ -42,6 +42,8 @@ __JSON Web Token__ - to generate tokens<br/>
 __Dotenv__ ( development ) - to use .env varibales in node js<br/>
 __Cors__ - for Cross-origin resource sharing<br/>
 
+## Testing Tool
+__Postman__
 
 ## Backend
 <p align="left">
