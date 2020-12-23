@@ -1,9 +1,9 @@
 const experss = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
 
-dotenv.config();
+// dotenv.config();
 
 const userRoutes = require("./routes/user-routes.js");
 const HttpError = require("./models/http-error.js");
