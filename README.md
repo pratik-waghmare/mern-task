@@ -35,7 +35,7 @@ __Headers__ - Authorization: "Bearer token"<br/>
 __Request body__ - { password : String, newPassword : String}<br/>
 __Response__ - { message : String}<br/>
 
-### Modules Used
+## Modules Used
 __Mongoose__ - for Schema models<br/>
 __Bcrypt__ - to encrypt the passwords<br/>
 __JSON Web Token__ - to generate tokens<br/>
