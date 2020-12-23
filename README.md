@@ -2,6 +2,10 @@
 ## API URL
 [Mern API](https://mern-api-task.herokuapp.com/api/users)
 
+### Credentials
+__Email__ - admin@gmail.com<br/>
+__Password__ - admin@123<br/>
+
 ## End Points
 ### Get all users
 [/api/users](https://mern-api-task.herokuapp.com/api/users)<br/>
