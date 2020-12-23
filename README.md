@@ -19,13 +19,14 @@ __Response__ - { message : String}<br/>
 [/api/login](https://mern-api-task.herokuapp.com/api/login)<br/>
 __Method__ - POST<br/>
 __Request body__ - { email : String, Unique, password : String}<br/>
-__Response__ - { userId : String, email : String, token : String}<br/>
+__Response__ - { message : String, user : { userId : String, email : String, token : String } }<br/>
 
 ### User Profile
 [/api/:uid](https://mern-api-task.herokuapp.com/api/)<br/>
 __Method__ - GET<br/>
 __Headers__ - Authorization: "Bearer token"<br/>
 __Request body__ - {}<br/>
+__Response__ - { user : { userId : String, email : String, } }<br/>
 
 
 ### Update password
