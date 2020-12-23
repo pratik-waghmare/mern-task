@@ -1,8 +1,8 @@
 const experss = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-// const dotenv = require("dotenv");
 
+// const dotenv = require("dotenv");
 // dotenv.config();
 
 const userRoutes = require("./routes/user-routes.js");
@@ -26,8 +26,8 @@ app.use((error, req, res, next) => {
     .json({ message: error.message || "An unknown error occured" });
 });
 
-const URL = "mongodb://localhost:27017/mern-task";
-const PORT = 5001;
+const URL = process.env.DATABASE_URL;
+const PORT = process.env.PORT || 5000;
 
 mongoose
   .connect(URL)
