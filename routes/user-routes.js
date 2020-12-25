@@ -1,35 +1,31 @@
 const express = require("express");
 
 const UserController = require("../controllers/user-controller");
-const UserValidation = require("../authentication/inputValidation");
+const Validation = require("../authentication/validation");
 const UserAuthentication = require("../authentication/userAuthentication");
 
 const router = express.Router();
 
 router.get("/users", UserController.getUsers);
 
-router.get("/:uid", [
-  UserValidation.tokenValidation,
-  UserAuthentication.userAuthenticationById,
-  UserController.getUserById,
-]);
+router.get("/:uid", [Validation.tokenValidation, UserController.getUserById]);
 
 router.post("/login", [
-  UserValidation.loginValidation,
+  Validation.loginValidation,
   UserAuthentication.userAuthenticationLogin,
   UserController.login,
 ]);
 
 router.post("/signup", [
-  UserValidation.signupValidation,
+  Validation.signupValidation,
   UserAuthentication.userAuthenticationSignUp,
   UserController.signup,
 ]);
 
 router.patch("/:uid", [
-  UserValidation.updateValidation,
-  UserValidation.tokenValidation,
+  Validation.updateValidation,
   UserAuthentication.userAuthenticationById,
+  Validation.tokenValidation,
   UserController.updatePassword,
 ]);
 

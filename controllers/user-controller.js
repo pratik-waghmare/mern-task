@@ -19,7 +19,6 @@ const getUsers = async (req, res, next) => {
 
 const getUserById = async (req, res, next) => {
   const userId = req.params.uid;
-  const authHeader = req.headers.authorization;
 
   // Get user from database
   let identifiedUser;
@@ -30,19 +29,8 @@ const getUserById = async (req, res, next) => {
     next(new HttpError("Database error", 500));
   }
 
-  // Verify if JWT token is correct
-  const token = authHeader.split(" ")[1];
-
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET_KEY, (err, userToken) => {
-    if (err) {
-      // If token is invalid
-      console.log(err);
-      next(new HttpError("Database error", 500));
-    }
-
-    // If token is valid return token and user information
-    res.status(200).json({ userToken, user: identifiedUser });
-  });
+  // If token is valid return token and user information
+  res.status(200).json({ token: req.decoded });
 };
 
 const login = async (req, res, next) => {
@@ -67,7 +55,7 @@ const login = async (req, res, next) => {
   }
 
   if (!isPasswordValid) {
-    next(new HttpError("Wrong Password", 500));
+    next(new HttpError("Wrong Password", 401));
   }
 
   // Generate JWT token
@@ -90,11 +78,7 @@ const login = async (req, res, next) => {
 
   res.status(200).json({
     message: "Logged in successfully",
-    user: {
-      userId: identifiedUser.id,
-      email: identifiedUser.email,
-      token: token,
-    },
+    token,
   });
 };
 
@@ -133,12 +117,11 @@ const signup = async (req, res, next) => {
     next(new HttpError("Database error", 500));
   }
 
-  res.json({ message: "User registeration successful" });
+  res.status(201).json({ message: "User registeration successful" });
 };
 
 const updatePassword = async (req, res, next) => {
   const userId = req.params.uid;
-  const authHeader = req.headers.authorization;
   const { password, newPassword } = req.body;
 
   // Get user from database
@@ -150,28 +133,21 @@ const updatePassword = async (req, res, next) => {
     next(new HttpError("Database error", 500));
   }
 
-  // Verify if JWT token is correct
-  const token = authHeader.split(" ")[1];
-
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET_KEY, (err, user) => {
-    if (err) {
-      // If token is invalid
-      console.log(err);
-      next(new HttpError("Invalid Token", 500));
-    }
-  });
-
-  // Check if passwords match
+  // Check if old password is correct
   let isPasswordValid;
   try {
     isPasswordValid = await bcrypt.compare(password, identifiedUser.password);
   } catch (err) {
-    console.log(err);
-    next(new HttpError("Password comparison failed", 500));
+    // If error occurs
+    if (err) {
+      next(new HttpError("Password comparison failed", 500));
+    }
   }
 
+  // If old password is wrong
   if (!isPasswordValid) {
-    next(new HttpError("Wrong password", 500));
+    next(new HttpError("Wrong password", 403));
+    return;
   }
 
   // Hash new password
@@ -193,11 +169,7 @@ const updatePassword = async (req, res, next) => {
     next(new HttpError("Database error", 500));
   }
 
-  res.status(200).json({ message: "Password Changed" });
+  res.status(201).json({ message: "Password updated" });
 };
 
-module.exports.getUsers = getUsers;
-module.exports.getUserById = getUserById;
-module.exports.login = login;
-module.exports.signup = signup;
-module.exports.updatePassword = updatePassword;
+module.exports = { getUsers, getUserById, login, signup, updatePassword };

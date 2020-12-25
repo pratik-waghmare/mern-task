@@ -29,7 +29,7 @@ const userAuthenticationSignUp = async (req, res, next) => {
   }
 
   if (identifiedUser) {
-    next(new HttpError("Email exists.", 404));
+    next(new HttpError("Email exists.", 403));
   }
 
   next();
